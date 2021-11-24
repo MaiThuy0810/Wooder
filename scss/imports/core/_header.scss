@@ -1,0 +1,217 @@
+.header {
+  z-index: 100;
+  position: fixed;
+  width: 100%;
+  .container-fluid {
+    // background-color: $background-header-cl;
+    padding-top: var(--gap);
+    padding-bottom: var(--gap);
+    @include flex;
+    position: relative;
+    @include xs {
+      background-color: $black-cl;
+    }
+    .logo {
+      // display: flex;
+      a {
+        display: flex;
+        align-items: center;
+        img {
+          @include sm {
+            width: 180px;
+            height: 100%;
+          }
+          @include xs {
+            width: 120px;
+            height: 100%;
+          }
+        }
+      }
+    }
+    .menu {
+      @include abs;
+      @include flex;
+      height: 100%;
+      cursor: pointer;
+      li {
+        a {
+          @include header;
+          color: $white-cl;
+          opacity: 0.25;
+          // };
+          &.active {
+            color: $yellow-cl;
+            opacity: 1;
+          }
+          &:hover {
+            opacity: 1;
+            color: $yellow-cl;
+          }
+        }
+        // .active {
+        //   color: $yellow-cl;
+        // }
+        .textmenu {
+          color: $white-cl;
+          opacity: 0.25;
+        }
+      }
+
+      @include xs {
+        display: none;
+      }
+      @include sm {
+        li {
+          a {
+            font-size: 13px;
+            margin: 0px 15px;
+          }
+        }
+      }
+    }
+    .dropdown {
+      display: flex;
+      align-items: center;
+      &__wrap {
+        position: relative;
+        .current {
+          span {
+            cursor: pointer;
+            color: $menu-text-cl;
+            font-family: pb;
+            letter-spacing: 0.8px;
+            font-size: 16px;
+            @include sm {
+              font-size: 13px;
+              // margin: 0px 15px;
+            }
+            @include xs {
+              font-size: 16px;
+            }
+          }
+        }
+        .option {
+          height: auto;
+          position: absolute;
+          background-color: white;
+          right: 0px;
+          font-family: pb;
+          top: 25px;
+          // pointer-events: none;
+          opacity: 0;
+
+          a {
+            color: $black-cl;
+            padding: 10px;
+            &:hover {
+              color: $yellow-cl;
+            }
+          }
+          &.active {
+            opacity: 1;
+          }
+        }
+      }
+      .btnhumber {
+        display: none;
+        // z-index: 300;
+        @include xs {
+          width: 20px;
+          display: block;
+          margin-left: 15px;
+
+          cursor: pointer;
+          span {
+            // width: 100%;
+            height: 2px;
+            display: block;
+            background-color: $yellow-cl;
+            margin: 5px auto;
+            width: 20px;
+            @include transition(0.3s);
+          }
+          &:before,
+          &:after {
+            content: "";
+            width: 20px;
+            height: 2px;
+            display: block;
+            background-color: $yellow-cl;
+            margin: 5px auto;
+            @include transform(rotate(0deg) translateY(0px));
+            @include transition(0.3s);
+          }
+        }
+        &.active {
+          &:before {
+            @include transform(rotate(45deg) translate(6px, 1px));
+            transition: 0.3s;
+          }
+          span {
+            opacity: 0;
+            transition: 0.3s;
+          }
+          &:after {
+            @include transform(rotate(-45deg) translate(9px, -4px));
+            transition: 0.3s;
+          }
+        }
+      }
+    }
+  }
+  &.active {
+    background-color: black;
+    transition: 0.3s;
+    .progress-container {
+      width: 100%;
+      height: 8px;
+      background: #ccc;
+    }
+
+    .progress-bar {
+      height: 8px;
+      background: #04aa6d;
+      width: 0%;
+    }
+  }
+}
+.nav {
+  display: none;
+  @include xs {
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    background-color: $black-cl;
+    position: fixed;
+    top: 0;
+    left: 0;
+    // opacity: 0;
+    z-index: 15;
+    position: fixed;
+    visibility: hidden;
+    @include transform(translateX(100%));
+    transition: 1s;
+    @include transform(initial);
+    @include transition(opacity 0.3s);
+    ul {
+      flex-direction: column;
+      @include mid;
+      li {
+        margin: 15px auto;
+        text-align: center;
+        a {
+          color: #fff;
+          &:hover {
+            color: $yellow-cl;
+          }
+        }
+      }
+    }
+  }
+}
+.active {
+  // opacity: 1;
+  visibility: initial;
+  @include transform(translateX(0%));
+  transition: 0.5s;
+}

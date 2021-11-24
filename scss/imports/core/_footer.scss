@@ -1,0 +1,51 @@
+// css footer
+.footer {
+  background-color: $black-cl;
+  .container {
+    position: relative;
+    p {
+      color: $gray-light-cl;
+    }
+    .footer__copy {
+      font-size: 12px;
+      letter-spacing: 0.8px;
+      line-height: 20.83px;
+      font-family: pr;
+    }
+    .footer__logo {
+      @include abs;
+      @include xs {
+        display: flex;
+        margin: 15px 0;
+      }
+    }
+    .footer__btt {
+      text-transform: uppercase;
+      font-size: 12px;
+      letter-spacing: 0.8px;
+      line-height: 83.33px;
+      font-family: pr;
+      cursor: pointer;
+      color: $gray-light-cl;
+      @include xs {
+        line-height: 2;
+      }
+    }
+    @include flex;
+  }
+  @include xs {
+    .container {
+      flex-direction: column;
+      padding: 20px 0px;
+      .footer__logo {
+        // margin: 20px auto;
+        position: initial;
+        left: initial;
+        @include transform(initial);
+      }
+      .footer__btt {
+        margin: 0;
+      }
+    }
+  }
+}
